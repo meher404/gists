@@ -11,25 +11,35 @@
 CREATE (t:Tag{name:"Java"}) 
 ----
 
-=== Create 2 tags with a similar link
+=== Create 2 tags with a 'is_similar' link
 
 [source,cypher]
 ----
-CREATE (t1:Tag {name:"Java"})-[r:AKA]->(t2:Tag {name:"C#"})
+CREATE (t1:Tag {name:"Java"})-[r:IS_SIMILAR]->(t2:Tag {name:"C#"})
 ----
 
 
-=== Create 2 tags with a belongs to link
+=== Create 2 tags with a 'belongs_to' link
 
 [source,cypher]
 ----
 CREATE (t1:Tag {name:"Java"})-[r:BELONGS_TO]->(t2:Tag {name:"Programming"})
 ----
 
+=== Create 2 tags with a 'accosiation' link
 
-And render as a graph.
+[source,cypher]
+----
+CREATE (t1:Tag {name:"Map Reduce"})-[r:ASSOCIATION]->(t2:Tag {name:"Hive"})
+----
 
-//graph
+=== Create only the link between 2 existing nodes
+
+[source,cypher]
+----
+MATCH (t1:Tag {name:"Map Reduce"}) , (t2:Tag {name:"Hive"}) 
+CREATE (t1)-[r1:IS_SIMILAR]->(t2)
+----
 
 
 And render as a table.
