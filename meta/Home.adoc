@@ -41,6 +41,10 @@ MATCH (t1:Tag {name:"Map Reduce"}) , (t2:Tag {name:"Hive"})
 CREATE (t1)-[r1:IS_SIMILAR]->(t2)
 ----
 
+Graph
+
+//graph
+
 
 And render as a table.
 
