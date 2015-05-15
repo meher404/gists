@@ -3,26 +3,34 @@
 == Getting Started
 //console
 
-=== Setup a Graph to show you and your Likes
+=== Create a Skill Tag
 
 //setup
 [source,cypher]
 ----
-CREATE (you:Person {name:"You"})-[like:LIKE]->(us:Database:NoSql:Graph {name:"Neo4j" })
-RETURN you, like, us
+CREATE (t:Tag{name:"Java"}) 
 ----
+
+=== Create 2 tags with a similar link
+
+[source,cypher]
+----
+CREATE (t1:Tag {name:"Java"})-[r:AKA]->(t2:Tag {name:"C#"})
+----
+
+
+=== Create 2 tags with a belongs to link
+
+[source,cypher]
+----
+CREATE (t1:Tag {name:"Java"})-[r:BELONGS_TO]->(t2:Tag {name:"Programming"})
+----
+
 
 And render as a graph.
 
 //graph
 
-=== Now query the graph to show all the things you like
-
-[source,cypher]
-----
-MATCH (you:Person {name:"You"})-[like:LIKE]->(liked)
-RETURN you.name AS who, type(like) AS how, liked.name AS what
-----
 
 And render as a table.
 
